@@ -20,9 +20,9 @@ const { argv } = yargs
 
 const config = [
   '--rootPath',
-  argv.rootPath || '../../../../../../../public/assets',
+  argv.rootPath || './public/assets',
   '--nodeModulesPath',
-  argv.nodeModulesPath || '../../../../../../../node_modules',
+  argv.nodeModulesPath || './node_modules',
 ];
 
 export const buildAdmin = function buildAdmin() {
@@ -38,13 +38,13 @@ export const watchAdmin = function watchAdmin() {
 watchAdmin.description = 'Watch admin asset sources and rebuild on changes.';
 
 export const buildShop = function buildShop() {
-  return gulp.src('vendor/sylius/sylius/src/Sylius/Bundle/ShopBundle/gulpfile.babel.js', { read: false })
+  return gulp.src('./gulpfile-shop.babel.js', { read: false })
     .pipe(chug({ args: config, tasks: 'build' }));
 };
 buildShop.description = 'Build shop assets.';
 
 export const watchShop = function watchShop() {
-  return gulp.src('vendor/sylius/sylius/src/Sylius/Bundle/ShopBundle/gulpfile.babel.js', { read: false })
+  return gulp.src('./gulpfile-shop.babel.js', { read: false })
     .pipe(chug({ args: config, tasks: 'watch' }));
 };
 watchShop.description = 'Watch shop asset sources and rebuild on changes.';
