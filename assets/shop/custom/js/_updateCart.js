@@ -4,6 +4,10 @@ const closeFlashOnClick = ($flashMessage) => {
   const $closebutton = $flashMessage.find('.close.icon');
 
   $closebutton.on('click', () => $flashMessage.remove());
+
+  setTimeout(() => {
+    $flashMessage.remove();
+  }, 3000);
 };
 
 export default (requestUrl) => {
